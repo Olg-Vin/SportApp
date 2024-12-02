@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
@@ -26,10 +29,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.vinio.sportapp.InriaSans
 import com.vinio.sportapp.Inter
-import com.vinio.sportapp.R
-import com.vinio.sportapp.fragments.bottoms.SignInBottom
+import com.vinio.sportapp.fragments.bottoms.SignUpBottom
 
-class SingInFragment : Fragment() {
+class SingUpFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +39,7 @@ class SingInFragment : Fragment() {
     ): View {
         val composeView = ComposeView(requireContext())
         composeView.setContent {
-            SignInPlease()
+            SignUpPlease()
         }
 
         return composeView
@@ -45,10 +47,11 @@ class SingInFragment : Fragment() {
 
     @Preview
     @Composable
-    fun SignInPlease() {
+    fun SignUpPlease() {
         // Переменные состояния для полей ввода
         val username = remember { mutableStateOf("") }
         val password = remember { mutableStateOf("") }
+        val repeatPassword = remember { mutableStateOf("") }
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -102,19 +105,37 @@ class SingInFragment : Fragment() {
                     .padding(bottom = 40.dp)
             )
 
-            // Кнопка
-            Button(
-                onClick = {
-                    findNavController().navigate(R.id.action_signIn_to_home)
+            // Поле ввода для повтора пароля
+            OutlinedTextField(
+                value = repeatPassword.value,
+                onValueChange = { repeatPassword.value = it },
+                placeholder = {
+                    Text(
+                        text = "Введите пароль. . .",
+                        style = TextStyle(
+                            fontFamily = Inter,
+                            fontWeight = FontWeight.Normal
+                        )
+                    )
                 },
                 modifier = Modifier
                     .width(300.dp)
-                    .padding(bottom = 140.dp, top = 20.dp)
+                    .padding(bottom = 40.dp)
+            )
+
+            // Кнопка
+            Button(
+                onClick = { /* Обработка нажатия */ },
+                modifier = Modifier
+                    .width(300.dp)
+                    .padding(top = 20.dp)
             ) {
-                Text("Войти")
+                Text("Зарегистрироваться")
             }
 
-            SignInBottom(findNavController())
+            SignUpBottom(findNavController())
+
         }
+
     }
 }

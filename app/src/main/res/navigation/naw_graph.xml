@@ -2,11 +2,45 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/naw_graph"
-    app:startDestination="@+id/signInFragment">
+    app:startDestination="@id/signInFragment">
 
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.vinio.sportapp.fragments.SingInFragment">
+
+        <action
+            android:id="@+id/action_signIn_to_signUp"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signIn_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.vinio.sportapp.fragments.SingUpFragment">
+
+        <action
+            android:id="@+id/action_signUp_to_signIn"
+            app:destination="@id/signInFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.vinio.sportapp.fragments.HomeFragment">
+
+        <action
+            android:id="@+id/action_home_to_settings"
+            android:name="com.vinio.sportapp.fragments.SettingsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.vinio.sportapp.fragments.SettingsFragment">
+
+        <action
+            android:id="@+id/action_settings_to_home"
+            android:name="com.vinio.sportapp.fragments.HomeFragment"/>
     </fragment>
 
 </navigation>
