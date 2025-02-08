@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("androidx.navigation.safeargs.kotlin") apply true
+    id("kotlin-kapt")
 }
 
 
@@ -41,16 +42,32 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14" // или актуальная версия
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
-val composeVersion = "1.5.14" // или самая последняя версия
+val composeVersion = "1.5.14"
 
 dependencies {
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.material3)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+//    TODO мигрировать на KSP
+    kapt("androidx.room:room-compiler:2.6.1")
+//    Позволяет получать данные из бд как только те изменились
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
-    debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
+//    debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.ui.tooling)
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.fragment.v284)

@@ -49,9 +49,9 @@ class SingUpFragment : Fragment() {
     @Composable
     fun SignUpPlease() {
         // Переменные состояния для полей ввода
-        val username = remember { mutableStateOf("") }
-        val password = remember { mutableStateOf("") }
-        val repeatPassword = remember { mutableStateOf("") }
+        val username = remember { mutableStateOf("name") }
+        val password = remember { mutableStateOf("password") }
+        val repeatPassword = remember { mutableStateOf("rPassword") }
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -59,7 +59,7 @@ class SingUpFragment : Fragment() {
             Text(
                 text = "Всего один шаг до спорта!",
                 style = TextStyle(
-                    fontFamily = InriaSans,
+//                    fontFamily = InriaSans,
                     fontWeight = FontWeight.Bold,
                     fontSize = 40.sp
                 ),
@@ -77,7 +77,7 @@ class SingUpFragment : Fragment() {
                     Text(
                         text = "Введите ваш логин или e-mail. . . ",
                         style = TextStyle(
-                            fontFamily = Inter,
+//                            fontFamily = Inter,
                             fontWeight = FontWeight.Normal
                         )
                     )
@@ -95,7 +95,7 @@ class SingUpFragment : Fragment() {
                     Text(
                         text = "Введите пароль. . .",
                         style = TextStyle(
-                            fontFamily = Inter,
+//                            fontFamily = Inter,
                             fontWeight = FontWeight.Normal
                         )
                     )
@@ -113,7 +113,7 @@ class SingUpFragment : Fragment() {
                     Text(
                         text = "Введите пароль. . .",
                         style = TextStyle(
-                            fontFamily = Inter,
+//                            fontFamily = Inter,
                             fontWeight = FontWeight.Normal
                         )
                     )
@@ -125,7 +125,7 @@ class SingUpFragment : Fragment() {
 
             // Кнопка
             Button(
-                onClick = { /* Обработка нажатия */ },
+                onClick = {  },
                 modifier = Modifier
                     .width(300.dp)
                     .padding(top = 20.dp)
